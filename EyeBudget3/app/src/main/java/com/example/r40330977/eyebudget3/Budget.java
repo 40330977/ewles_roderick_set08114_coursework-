@@ -32,12 +32,12 @@ public class Budget {
 
     public String btoString() {
 
-        return _bid + " - " + _balance;
+        return _bid + " - " + _balance;//returns string
     }
 
     public String ciaString() {
         return "You have " + _balance + "pounds left";
-    }
+    }//returns toast amount
 
 
 }

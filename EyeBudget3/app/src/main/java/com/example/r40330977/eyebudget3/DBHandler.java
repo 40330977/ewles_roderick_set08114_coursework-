@@ -70,7 +70,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //create required tables
+        //create tables
         db.execSQL(CREATE_BUDGET_TABLE);
         db.execSQL(CREATE_EXPENSES_TABLE);
 
@@ -103,6 +103,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
+    //get an expense
     public Expense getExpense(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_EXPENSES, // a. table
@@ -152,6 +153,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return expenses;
     }
 
+    //update expense
     public int updateExpense(Expense expense) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -171,6 +173,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return i;
     }
 
+    //delete expense
     public void deleteOne(Expense expense) {
         // Get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
@@ -193,6 +196,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.insert(TABLE_BUDGET, null, values);
         db.close();}
 
+    //list all budgets
     public List<Budget> allBudget() {
 
         List<Budget> budgets = new LinkedList<Budget>();
@@ -215,6 +219,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return budgets;
     }
 
+    //get a budget
     public Budget getBudget(int bid) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_BUDGET, // a. table
@@ -237,6 +242,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return budget;
     }
 
+    //get last budget used to calculate new budget and plot graph
     public Budget getLastBudget() {
         String selectQuery= "SELECT * FROM " + TABLE_BUDGET +" ORDER BY " + KEY_BID + " DESC LIMIT 1";
         SQLiteDatabase db = this.getWritableDatabase();
@@ -252,6 +258,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return budget;
     }
 
+    //used to control expense ids
     public Expense getLastExpense() {
         String selectQuery= "SELECT * FROM " + TABLE_EXPENSES +" ORDER BY " + KEY_ID + " DESC LIMIT 1";
         SQLiteDatabase db = this.getWritableDatabase();
@@ -272,6 +279,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return expense;
     }
 
+    //update a budget
     public int updateBudget(Budget budget) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -289,6 +297,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return i;
     }
 
+    //delete a budget entry
     public void deleteOneb(Budget budget) {
         // Get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
@@ -298,6 +307,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
+    //return analysis data
     public String[] getAnalysisData(){
         String query = "SELECT  * FROM " + TABLE_BUDGET;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -313,6 +323,8 @@ public class DBHandler extends SQLiteOpenHelper {
 
         return  balances;
     }
+
+    //convert data to data points
     public DataPoint[] generateData(String[] balances) {
         int count = balances.length;
         DataPoint[] values = new DataPoint[count];
@@ -325,6 +337,7 @@ public class DBHandler extends SQLiteOpenHelper {
         }
         return values;}
 
+    //same as budget method but for Expense
     public String[] getEAnalysisData(){
         String query = "SELECT  * FROM " + TABLE_EXPENSES;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -340,6 +353,8 @@ public class DBHandler extends SQLiteOpenHelper {
 
         return  expenses;
     }
+
+    //same as budget method but for Expense
     public DataPoint[] generateEData(String[] expenses) {
         int count = expenses.length;
         DataPoint[] values = new DataPoint[count];

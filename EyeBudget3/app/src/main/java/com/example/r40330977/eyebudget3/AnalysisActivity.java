@@ -46,7 +46,7 @@ public class AnalysisActivity extends ActionBarActivity {
 
        series = new LineGraphSeries<>(db.generateData(balances));//create new series converting data to data points
 
-        graph.addSeries(series);
+        graph.addSeries(series);//add series to graph
 
 
         Button btn = (Button) findViewById(R.id.buttonAB);

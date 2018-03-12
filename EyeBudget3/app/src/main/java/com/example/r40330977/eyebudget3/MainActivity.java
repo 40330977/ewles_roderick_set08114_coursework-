@@ -32,24 +32,28 @@ public class MainActivity extends ActionBarActivity {
         DBHandler db = new DBHandler(this);
         String timeStamp = new SimpleDateFormat(" yyyyMMdd_HHmmss "). format (new Date ());
 
-
+        //demo expense entries
         Expense expense1 = new Expense(1, "Food", 5, "gregs", timeStamp);
         Expense expense2 = new Expense(2, "Bill", 30, "heating", timeStamp);
         Expense expense3 = new Expense(3, "luxury", 20,"netflix", timeStamp);
 
+        //innitial budget
         Budget budget1 = new Budget(0,1);
 
+        //add demo expenses
         db.addExpense(expense1);
         db.addExpense(expense2);
         db.addExpense(expense3);
 
+        //add innitial budget
         db.addBudget(budget1);
-        // list all players
+        //list expenses
         List<Expense> expenses = db.allExpenses();
 
-        //List<Budget> budgets = db.allBudget();
+        //call get last budget method used to generate how much toast
         final Budget budget =  db.getLastBudget();
 
+        //vew expenses
         Button btn = (Button) findViewById(R.id.buttonvs);
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -59,6 +63,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        //can I afford it toast
         Button btn1 = (Button) findViewById(R.id.buttonciai);
         btn1.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -72,6 +77,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        //set budget
         Button btn2 = (Button) findViewById(R.id.buttonswb);
         btn2.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -81,6 +87,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        //spend money
         Button btn3 = (Button) findViewById(R.id.buttonsm);
         btn3.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -90,6 +97,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        //budget analysis
         Button btn4 = (Button) findViewById(R.id.buttona);
         btn4.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -99,6 +107,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        //expense analysis
         Button btn5 = (Button) findViewById(R.id.buttonea);
         btn5.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -108,21 +117,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        /*
 
-        /*if (budgets != null) {
-            String[] itemsNames = new String[budgets.size()];
-
-            for (int i = 0; i < budgets.size(); i++) {
-                itemsNames[i] = budgets.get(i).btoString();
-            }
-
-            // display like string instances
-            ListView list = (ListView) findViewById(R.id.list);
-            list.setAdapter(new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1, android.R.id.text1, itemsNames));
-
-        }*/
 
     }
 }
