@@ -22,12 +22,11 @@ public class ViewExpensesActivity extends ActionBarActivity {
 
         DBHandler db = new DBHandler(this);
 
-        List<Expense> expenses = db.allExpenses();//get list of expenses
+        List<Expense> expenses = db.allExpenses();
 
         if (expenses != null) {
             String[] itemsNames = new String[expenses.size()];
 
-            //get strings for list
             for (int i = 0; i < expenses.size(); i++) {
                 itemsNames[i] = expenses.get(i).toString();
             }
@@ -39,7 +38,6 @@ public class ViewExpensesActivity extends ActionBarActivity {
 
         }
 
-        //get back to main activity
         Button btn = (Button) findViewById(R.id.buttonveb);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

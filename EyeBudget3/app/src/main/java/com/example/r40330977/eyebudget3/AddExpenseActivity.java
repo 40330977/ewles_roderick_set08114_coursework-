@@ -57,7 +57,7 @@ public class AddExpenseActivity extends ActionBarActivity {
                 db.addBudget(newBudget);
 
                 Intent SMB = new Intent(AddExpenseActivity.this, MainActivity.class);
-                startActivity(SMB);//change intent back to main activity
+                startActivity(SMB);
 
 
 
