@@ -34,8 +34,8 @@ public class AddExpenseActivity extends ActionBarActivity {
             public void onClick(View view) {
                 final EditText input = (EditText) findViewById(R.id.editTextSMA);
                 final EditText des = (EditText) findViewById(R.id.editTextSMD);
-                final EditText type = (EditText) findViewById(R.id.editTextSMT);
-                int neManager = expense.get_id() +1;
+                final EditText type = (EditText) findViewById(R.id.editTextSMT);//get data
+                int neManager = expense.get_id() +1;//increment id
                 final Expense newExpense = new Expense();
                 newExpense.set_amount(Integer.parseInt(input.getText().toString()));
                 newExpense.set_id(neManager);
@@ -46,17 +46,17 @@ public class AddExpenseActivity extends ActionBarActivity {
 
 
 
-                db.addExpense(newExpense);
+                db.addExpense(newExpense);//add to database
 
                 int bidManager = budget.get_bid() +1;
                 int inToBal = budget.get_balance() - Integer.parseInt(input.getText().toString());
                 Budget newBudget = new Budget();
                 newBudget.set_bid(bidManager);
-                newBudget.set_balance(inToBal);
+                newBudget.set_balance(inToBal);//create new budget entry
                 
-                db.addBudget(newBudget);
+                db.addBudget(newBudget);//add to database
 
-                Intent SMB = new Intent(AddExpenseActivity.this, MainActivity.class);
+                Intent SMB = new Intent(AddExpenseActivity.this, MainActivity.class);//return to main activity
                 startActivity(SMB);
 
 

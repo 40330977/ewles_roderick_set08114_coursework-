@@ -28,17 +28,17 @@ public class ViewExpensesActivity extends ActionBarActivity {
             String[] itemsNames = new String[expenses.size()];
 
             for (int i = 0; i < expenses.size(); i++) {
-                itemsNames[i] = expenses.get(i).toString();
+                itemsNames[i] = expenses.get(i).toString();//get data
             }
 
-            // display like string instances
+            // display in list
             ListView list = (ListView) findViewById(R.id.list);
             list.setAdapter(new ArrayAdapter<String>(this,
                     android.R.layout.simple_list_item_1, android.R.id.text1, itemsNames));
 
         }
 
-        Button btn = (Button) findViewById(R.id.buttonveb);
+        Button btn = (Button) findViewById(R.id.buttonveb);//back button
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

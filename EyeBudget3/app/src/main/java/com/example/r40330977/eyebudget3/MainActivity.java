@@ -32,24 +32,25 @@ public class MainActivity extends ActionBarActivity {
         DBHandler db = new DBHandler(this);
         String timeStamp = new SimpleDateFormat(" yyyyMMdd_HHmmss "). format (new Date ());
 
-
+        //preloaded example expenses
         Expense expense1 = new Expense(1, "Food", 5, "gregs", timeStamp);
         Expense expense2 = new Expense(2, "Bill", 30, "heating", timeStamp);
         Expense expense3 = new Expense(3, "luxury", 20,"netflix", timeStamp);
 
+        //initial budget
         Budget budget1 = new Budget(0,1);
 
+
+        //add examples and innitial budget
         db.addExpense(expense1);
         db.addExpense(expense2);
         db.addExpense(expense3);
 
         db.addBudget(budget1);
-        // list all players
-        List<Expense> expenses = db.allExpenses();
-
 
         final Budget budget =  db.getLastBudget();
 
+        //buttons to change intent
         Button btn = (Button) findViewById(R.id.buttonvs);
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -108,21 +109,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        /*
 
-        /*if (budgets != null) {
-            String[] itemsNames = new String[budgets.size()];
-
-            for (int i = 0; i < budgets.size(); i++) {
-                itemsNames[i] = budgets.get(i).btoString();
-            }
-
-            // display like string instances
-            ListView list = (ListView) findViewById(R.id.list);
-            list.setAdapter(new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1, android.R.id.text1, itemsNames));
-
-        }*/
 
     }
 }

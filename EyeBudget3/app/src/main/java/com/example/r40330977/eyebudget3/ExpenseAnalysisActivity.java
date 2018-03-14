@@ -52,7 +52,7 @@ public class ExpenseAnalysisActivity extends ActionBarActivity {
 
 
 
-        Button btn = (Button) findViewById(R.id.buttonABE);
+        Button btn = (Button) findViewById(R.id.buttonABE);//return to main
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

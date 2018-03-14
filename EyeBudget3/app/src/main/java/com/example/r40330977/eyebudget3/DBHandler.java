@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * Created by Roddy on 04/03/2018.
+ * DataBaseHandler
  */
 
 public class DBHandler extends SQLiteOpenHelper {
@@ -103,29 +104,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-   /* public Expense getExpense(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_EXPENSES, // a. table
-                COLUMNS, // b. column names
-                " id = ?", // c. selections
-                new String[] { String.valueOf(id) }, // d. selections args
-                null, // e. group by
-                null, // f. having
-                null, // g. order by
-                null); // h. limit
 
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        Expense expense = new Expense();
-        expense.set_id(Integer.parseInt(cursor.getString(0)));
-        expense.set_type(cursor.getString(1));
-        expense.set_amount(Integer.parseInt(cursor.getString(2)));
-        expense.set_description(cursor.getString(3));
-        expense.set_when(cursor.getString(4));
-
-        return expense;
-    }*/
 
     //list expenses
     public List<Expense> allExpenses() {
@@ -152,33 +131,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return expenses;
     }
 
-    /*public int updateExpense(Expense expense) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(KEY_ID, expense.get_id());
-        values.put(KEY_TYPE, expense.get_type());
-        values.put(KEY_AMOUNT, expense.get_amount());
-        values.put(KEY_DESCRIPTION, expense.get_description());
-        values.put(KEY_LOGTIME, expense.get_when());
 
-        int i = db.update(TABLE_EXPENSES, // table
-                values, // column/value
-                "id = ?", // selections
-                new String[]{String.valueOf(expense.get_id())});
-
-        db.close();
-
-        return i;
-    }*/
-
-   /* public void deleteOne(Expense expense) {
-        // Get reference to writable DB
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_EXPENSES, "id = ?",
-                new String[] { String.valueOf(expense.get_id()) });
-        db.close();
-
-    }*/
 
     //add a budget
     public void addBudget(Budget budget){
@@ -193,49 +146,6 @@ public class DBHandler extends SQLiteOpenHelper {
         db.insert(TABLE_BUDGET, null, values);
         db.close();}
 
-    /*public List<Budget> allBudget() {
-
-        List<Budget> budgets = new LinkedList<Budget>();
-        String query = "SELECT  * FROM " + TABLE_BUDGET;
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        Budget budget = null;
-
-        if (cursor.moveToFirst()) {
-            do {
-                budget = new Budget();
-                budget.set_bid(Integer.parseInt(cursor.getString(0)));
-                budget.set_balance(Integer.parseInt(cursor.getString(1)));
-
-                //add
-                budgets.add(budget);
-            } while (cursor.moveToNext());
-        }
-
-        return budgets;
-    }**/
-
-    /*public Budget getBudget(int bid) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_BUDGET, // a. table
-                BCOLUMNS, // b. column names
-                " bid = ?", // c. selections
-                new String[]{String.valueOf(bid)}, // d. selections args
-                null, // e. group by
-                null, // f. having
-                null, // g. order by
-                null); // h. limit
-
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        Budget budget = new Budget();
-        budget.set_bid(Integer.parseInt(cursor.getString(0)));
-        budget.set_balance(Integer.parseInt(cursor.getString(1)));
-
-
-        return budget;
-    }*/
 
     public Budget getLastBudget() {
         String selectQuery= "SELECT * FROM " + TABLE_BUDGET +" ORDER BY " + KEY_BID + " DESC LIMIT 1";
@@ -272,31 +182,6 @@ public class DBHandler extends SQLiteOpenHelper {
         return expense;
     }
 
-   /* public int updateBudget(Budget budget) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(KEY_BID, budget.get_bid());
-        values.put(KEY_BALANCE, budget.get_balance());
-
-
-        int i = db.update(TABLE_BUDGET, // table
-                values, // column/value
-                "id = ?", // selections
-                new String[]{String.valueOf(budget.get_bid())});
-
-        db.close();
-
-        return i;
-    }*/
-
-    /*public void deleteOneb(Budget budget) {
-        // Get reference to writable DB
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_BUDGET, "bid = ?",
-                new String[]{String.valueOf(budget.get_bid())});
-        db.close();
-
-    }*/
 
     public String[] getAnalysisData(){
         String query = "SELECT  * FROM " + TABLE_BUDGET;

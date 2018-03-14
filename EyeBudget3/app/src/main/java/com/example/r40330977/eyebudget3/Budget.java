@@ -8,6 +8,7 @@ import java.util.Date;
 
 /**
  * Created by Roddy on 04/03/2018.
+ * Budget Class
  */
 
 public class Budget {
@@ -37,7 +38,7 @@ public class Budget {
 
     public String ciaString() {
         return "You have " + _balance + "pounds left";
-    }
+    }//can i afford it toast
 
 
 }

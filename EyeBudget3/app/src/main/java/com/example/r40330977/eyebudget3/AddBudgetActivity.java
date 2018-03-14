@@ -26,13 +26,13 @@ public class AddBudgetActivity extends ActionBarActivity {
             public void onClick(View view) {
                 final EditText input = (EditText) findViewById(R.id.editTextAB);
                 //input.getText().toString();
-                int inToBal = budget.get_balance() + Integer.parseInt(input.getText().toString());
-                int bidManager = budget.get_bid() +1;
+                int inToBal = budget.get_balance() + Integer.parseInt(input.getText().toString());//get data from text view
+                int bidManager = budget.get_bid() +1;//increment id
                 Budget newBudget = new Budget();
                 newBudget.set_bid(bidManager);
                 newBudget.set_balance(inToBal);
 
-                db.addBudget(newBudget);
+                db.addBudget(newBudget);//add budget
 
                 Intent ABAB = new Intent(AddBudgetActivity.this, MainActivity.class);
                 startActivity(ABAB);

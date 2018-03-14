@@ -7,6 +7,7 @@ import java.util.Date;
 
 /**
  * Created by Roddy on 04/03/2018.
+ * Expense Class
  */
 
 public class Expense {
@@ -52,6 +53,6 @@ public class Expense {
         catch(ParseException e) {
             e.printStackTrace();
         }
-        return _id + " - " + _type + " - " + _amount + " pounds - " + _description + " - " + date;
+        return _id + " - " + _type + " - " + _amount + " pounds - " + _description + " - " + date;//Expense data to string
     }
 }

@@ -49,7 +49,7 @@ public class AnalysisActivity extends ActionBarActivity {
         graph.addSeries(series);
 
 
-        Button btn = (Button) findViewById(R.id.buttonAB);
+        Button btn = (Button) findViewById(R.id.buttonAB);//return to main
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
